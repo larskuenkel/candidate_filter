@@ -25,7 +25,7 @@ def decay_law(x, a , b):
 
 
 def fit_decay(x_vals, y_vals):
-    popt, pcov = curve_fit(decay_law, x_vals, y_vals, p0=[y_vals.max(), 0.1])# ,method='trf',loss='arctan')
+    popt, pcov = curve_fit(decay_law, x_vals, y_vals, p0=[y_vals.max(), 0.01])# ,method='trf',loss='arctan')
     errors = np.sqrt(np.diag(pcov))
     return popt, errors
 

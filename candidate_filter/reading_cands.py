@@ -25,7 +25,7 @@ def read_candidate_files(files, verbose=True):
         all_rows.extend(create_row(root, candidates, file, file_index))
 
         # Grab needed meta data of obs
-        # Maybe should grtab all values and check if comparison between files makes sense
+        # Maybe should grab all values and check if comparison between files makes sense
         if file_index == 0:
             tsamp = float(root[1].find("tsamp").text)
             nsamples = float(root[1].find("nsamples").text)
