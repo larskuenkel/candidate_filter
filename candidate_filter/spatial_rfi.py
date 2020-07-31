@@ -60,6 +60,9 @@ def label_spatial_rfi(df_cands, config):
         new_row['best_candidate_file'] = best_candidate['file']
         new_row['best_period'] = best_candidate['period']
         new_row['best_acc'] = best_candidate['acc']
+        new_row['best_dm'] = best_candidate['dm']
+        new_row['max_dm'] = df_truncated ['dm'].max()
+        new_row['min_dm'] = df_truncated ['dm'].min()
 
         total_nassoc = len(df_truncated) + df_truncated['nassoc'].sum()
 
