@@ -18,6 +18,8 @@ def parse_arguments():
     default_config_path = f"{os.path.dirname(__file__)}/default_config.json"
     parser.add_argument('-c', '--config', type=str, default=default_config_path,
                         metavar=('config_file'), help="Path to config file.")
+    parser.add_argument('-p', '--plot', action='store_true',
+                        help="Plot diagnostic plots of the clusters.")
     args = parser.parse_args()
     return args
 
@@ -38,7 +40,9 @@ def main(args):
         df_cands_ini, obs_meta_data, config)
 
     # Find spatial RFI and write out details about clusters
-    df_clusters = spatial_rfi.label_spatial_rfi(df_cands_clustered, config)
+    plot_arguments = [args.plot, f"{os.path.dirname(args.output)}/cluster_plots/"]
+    df_clusters = spatial_rfi.label_spatial_rfi(df_cands_clustered, config, 
+        plot_arguments=plot_arguments)
 
     # Label bad clusters
     df_cands_filtered, df_clusters_filtered = filtering.filter_clusters(df_cands_clustered,

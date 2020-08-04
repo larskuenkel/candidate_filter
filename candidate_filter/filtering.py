@@ -31,16 +31,16 @@ def filter_clusters(df_cands, df_clusters, config):
 
     print(f"Clusters: {len(df_clusters)}")
     print(f"RFI Clusters: {len(df_clusters[df_clusters['spatial_rfi']==1])}")
-    print(f"RFI Files: {len(df_cands[df_cands['spatial_rfi']==1])}")
-    print(f"Low nassoc files: {len(df_cands[df_cands['low_nassoc']==1])}")
+    print(f"RFI Candidates: {len(df_cands[df_cands['spatial_rfi']==1])}")
+    print(f"Low nassoc Candidates: {len(df_cands[df_cands['low_nassoc']==1])}")
 
     good_files = df_cands[(df_cands['spatial_rfi'] == 0) &
                           (df_cands['low_nassoc'] == 0)]
 
     # Good files == neither RFI nor low nassoc
-    print(f"Good Files: {len(good_files)}")
+    print(f"Good Candidates: {len(good_files)}")
     # Good files to fold == good files which are the strongest in their cluster
     print(
-        f"Good Files to fold: {len(good_files[good_files['strongest_in_cluster']==1])}")
+        f"Good Clusters: {len(good_files[good_files['strongest_in_cluster']==1])}")
 
     return df_cands, df_clusters
